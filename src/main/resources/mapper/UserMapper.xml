@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sheng.dao.UserDao">
+    <resultMap id="usermod" type="com.sheng.vo.User.UserVo">
+        <result column="create_time" property="create_time_cuo"/>
+        <result column="role_name" property="rolename"/>
+        <result column="login_status" property="loginStatus"/>
+    </resultMap>
+    <select id="queryUsersByQuery" parameterType="com.sheng.vo.User.UserLike" resultMap="usermod">
+        select * from db_myweb.user LEFT JOIN db_myweb.role on user.rid=role.roleid
+        <where>
+            <if test="userLike.query != null">
+                and username like "%"#{userLike.query}"%"
+            </if>
+        </where>
+        limit #{userLike.startIndex},#{userLike.pageSize};
+    </select>
+    <!--    查询记录时-->
+    <select id="queryTotalByQuery" parameterType="string" resultType="int">
+        select count(*) from db_myweb.user
+        <where>
+            <if test="query != null">
+                and username like "%" #{query} "%"
+            </if>
+        </where>
+    </select>
+
+    <!-- 添加用户 -->
+    <insert id="addUser" parameterType="com.sheng.model.User">
+        insert into db_myweb.user(rid, username, password, mobile, email)
+        values (#{user.rid},#{user.username},#{user.password},#{user.mobile},#{user.email})
+    </insert>
+</mapper>
