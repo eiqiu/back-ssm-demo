@@ -35,10 +35,10 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.8" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" />
-          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.14" />
           <element id="library" level="application" name="axios" />
           <element id="library" level="application" name="vue" />
           <element id="library" level="application" name="vue.cjs" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
         </element>
       </element>
     </root>
